@@ -13,6 +13,14 @@ namespace StormShellcoder
         public MainWindow()
         {
             InitializeComponent();
+            saveSettings(); // initialize settings with default values
+        }
+
+        private void saveSettings()
+        {
+            Settings.setJoinSeq(this.textBoxSettingsJoinSequence.Text);
+            Settings.setAddJoinSequenceToBeginning((bool)this.checkBoxSettingsAddSequenceToBeginning.IsChecked);
+            Settings.setUseCapitalLetters((bool)this.checkBoxSettingsUseCapitalLetters.IsChecked);
         }
 
         private string getBinDirectoryPath()
@@ -51,7 +59,7 @@ namespace StormShellcoder
                 try
                 {
                     Byte[] output = File.ReadAllBytes("temp/output");
-                    this.textBoxOutput.Text = BitConverter.ToString(output);
+                    this.textBoxOutput.Text = DataManipulation.manipulateOutput(BitConverter.ToString(output));
                 }
                 catch
                 {
@@ -67,6 +75,11 @@ namespace StormShellcoder
         private void buttonCopy_Click(object sender, RoutedEventArgs e)
         {
             Clipboard.SetText(this.textBoxOutput.Text);
+        }
+
+        private void buttonSaveSettings_Click(object sender, RoutedEventArgs e)
+        {
+            saveSettings();
         }
     }
 }
