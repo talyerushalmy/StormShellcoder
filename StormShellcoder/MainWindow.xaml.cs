@@ -3,6 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media;
 
 namespace StormShellcoder
@@ -33,6 +34,21 @@ namespace StormShellcoder
             Settings.setCheckContainsNullByte((bool)this.checkBoxSettingsCheckNullByte.IsChecked);
         }
 
+        private void resetErrorTag(Button button)
+        {
+            button.Background = this.defaultButtonBackground;
+            button.IsEnabled = false;
+        }
+
+        private void resetAllErrorTags()
+        {
+            Button[] buttons = new Button[]{this.buttonCheckNullByte};
+            foreach (Button button in buttons)
+            {
+                resetErrorTag(button);
+            }
+        }
+
         private void performTests(Disassembly disasm)
         {
             if (Settings.getCheckContainsNullByte())
@@ -49,8 +65,7 @@ namespace StormShellcoder
             }
             else
             {
-                this.buttonCheckNullByte.Background = this.defaultButtonBackground;
-                this.buttonCheckNullByte.IsEnabled = false;
+                resetErrorTag(this.buttonCheckNullByte);
             }
         }
 
@@ -99,6 +114,7 @@ namespace StormShellcoder
             try
             {
                 cleanTempFolder();
+                resetAllErrorTags();
 
                 string userInput = this.textBoxInput.Text;
 
