@@ -4,9 +4,13 @@ namespace StormShellcoder
 {
     public static class Settings
     {
+        // output format related settings
         private static string joinSeq;
         private static bool addJoinSequenceToBeginning;
         private static bool useCapitalLetters;
+
+        // output tests related settings
+        private static bool checkContainsNullByte;
 
         public static string getJoinSeq()
         {
@@ -36,6 +40,16 @@ namespace StormShellcoder
         public static void setUseCapitalLetters(bool useCapitalLetters)
         {
             Settings.useCapitalLetters = useCapitalLetters;
+        }
+
+        public static bool getCheckContainsNullByte()
+        {
+            return Settings.checkContainsNullByte;
+        }
+
+        public static void setCheckContainsNullByte(bool checkContainsNullByte)
+        {
+            Settings.checkContainsNullByte = checkContainsNullByte;
         }
     }
 }
