@@ -26,9 +26,11 @@ The supported tests are the following:
 **Format**
 
 Join sequence between bytes and control opcode configurations, e.g.
- > `0x13, 0x37` join on `\x`, add to beginning -> `\x13\x37`
- > `0x13, 0x37` join on `-`, don't add to ends -> `13-37`
- > `0x13, 0x37` join on `|`, add to beginning and end -> `|13|37|`
+> `0x13, 0x37` join on `\x`, add to beginning -> `\x13\x37`
+
+> `0x13, 0x37` join on `-`, don't add to ends -> `13-37`
+
+> `0x13, 0x37` join on `|`, add to beginning and end -> `|13|37|`
 
 Add a prefix and a suffix to your output, e.g.
 > `\x13\x37` with prefix `python -c "print '` and suffix `'" | ./program` -> `python -c "print '\x13\x37'" | ./program`
