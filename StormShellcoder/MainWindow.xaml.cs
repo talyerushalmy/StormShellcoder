@@ -13,7 +13,9 @@ namespace StormShellcoder
     /// </summary>
     public partial class MainWindow : Window
     {
+        private Disassembly disasm;
         private Brush defaultButtonBackground;
+        private bool assemblerSuccess = false;
 
         public MainWindow()
         {
@@ -40,7 +42,6 @@ namespace StormShellcoder
         private void resetErrorTag(Button button)
         {
             button.Background = this.defaultButtonBackground;
-            button.IsEnabled = false;
         }
 
         private void resetAllErrorTags()
@@ -49,11 +50,23 @@ namespace StormShellcoder
             foreach (Button button in buttons)
             {
                 resetErrorTag(button);
+                button.IsEnabled = true;
             }
         }
 
         private void performTests(Disassembly disasm)
         {
+            // perform assembler test
+            if (!this.assemblerSuccess)
+            {
+                this.buttonCheckAssemblerSuccess.Background = Brushes.Red;
+                resetAllErrorTags();
+                // return so no the rest of the test won't be performed
+                return;
+            }
+
+            this.buttonCheckAssemblerSuccess.Background = Brushes.Green;
+
             // perform null byte test
             if (Settings.getCheckContainsNullByte())
             {
@@ -126,7 +139,8 @@ namespace StormShellcoder
                 file.Directory.Create();
                 File.WriteAllText(file.FullName, userInput);
 
-                System.Diagnostics.Process process_assembly = createProcess("nasm", "-o temp/output temp/input_code.asm");
+                System.Diagnostics.Process process_assembly =
+                    createProcess("nasm", "-o temp/output temp/input_code.asm");
                 process_assembly.Start();
                 process_assembly.WaitForExit();
 
@@ -140,19 +154,24 @@ namespace StormShellcoder
                         throw new Exception();
 
                     string process_disassembly_output = process_disassembly.StandardOutput.ReadToEnd();
-                    Disassembly disasm = new Disassembly(process_disassembly_output);
+                    disasm = new Disassembly(process_disassembly_output);
 
                     this.textBoxOutput.Text = DataManipulation.manipulateOutput(disasm.getAllOpcodes());
-                    performTests(disasm);
+                    this.assemblerSuccess = true;
                 }
                 catch (Exception exception)
                 {
-                    this.textBoxOutput.Text = "Assembler raised an error.\nPlease check your code.\n\n" + exception;
+                    throw exception;
                 }
             }
             catch (Exception exception)
             {
-                this.textBoxOutput.Text = exception.ToString();
+                this.textBoxOutput.Text = "Assembler raised an error.\nPlease check your code.\n\n" + exception;
+                this.assemblerSuccess = false;
+            }
+            finally
+            {
+                performTests(disasm);
             }
         }
 

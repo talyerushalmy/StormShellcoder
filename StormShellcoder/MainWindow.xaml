@@ -13,7 +13,8 @@
                     <TextBox x:Name="textBoxInput" HorizontalAlignment="Left" Height="545" TextWrapping="Wrap" VerticalAlignment="Top" Width="445" Margin="0,0,0,-0.2" AcceptsReturn="True" AcceptsTab="True" VerticalScrollBarVisibility="Auto"/>
                     <TextBox x:Name="textBoxOutput" HorizontalAlignment="Left" Height="446" Margin="445,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="344" IsReadOnly="True" VerticalScrollBarVisibility="Auto"/>
                     <Grid x:Name="gridErrorTags" HorizontalAlignment="Left" Height="34" Margin="445,446,0,0" VerticalAlignment="Top" Width="344">
-                        <Button x:Name="buttonCheckNullByte" Content="\0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="34" Height="34" FontSize="12"/>
+                        <Button x:Name="buttonCheckAssemblerSuccess" Content="ASM" HorizontalAlignment="Left" VerticalAlignment="Top" Width="34" Height="34" FontSize="12"/>
+                        <Button x:Name="buttonCheckNullByte" Content="\0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="34" Height="34" FontSize="12" Margin="34,0,0,0"/>
                     </Grid>
                     <Button x:Name="buttonAssemble" Content="Assemble" HorizontalAlignment="Left" Margin="445,480,0,-0.2" VerticalAlignment="Top" Width="244" Height="65" Click="buttonAssemble_Click"/>
                     <Button x:Name="buttonCopy" Content="Copy" HorizontalAlignment="Left" Margin="689,480,0,-0.2" VerticalAlignment="Top" Width="100" Height="65" Click="buttonCopy_Click"/>
@@ -28,12 +29,12 @@
                                     <Label x:Name="labelSettingsJoinSequence" Content="Join Sequence" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
                                     <TextBox x:Name="textBoxSettingsJoinSequence" HorizontalAlignment="Left" Height="23" Margin="101,10,0,0" TextWrapping="Wrap" Text="\x" VerticalAlignment="Top" Width="120"/>
                                     <CheckBox x:Name="checkBoxSettingsAddSequenceToBeginning" Content="Add Sequence To Beginning" HorizontalAlignment="Left" Margin="235,16,0,0" VerticalAlignment="Top" IsChecked="True"/>
+                                    <CheckBox x:Name="checkBoxSettingsAddSequenceToEnd" Content="Add Sequence To End" HorizontalAlignment="Left" Margin="426,16,0,0" VerticalAlignment="Top" IsChecked="False"/>
                                     <CheckBox x:Name="checkBoxSettingsUseCapitalLetters" Content="Use Capital Letters" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
                                     <Label x:Name="labelSettingsPrefix" Content="Prefix" HorizontalAlignment="Left" Margin="10,61,0,0" VerticalAlignment="Top"/>
                                     <Label x:Name="labelSettingsSuffix" Content="Suffix" HorizontalAlignment="Left" Margin="212,61,0,0" VerticalAlignment="Top"/>
                                     <TextBox x:Name="textBoxSettingsPrefix" HorizontalAlignment="Left" Height="23" Margin="54,61,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="148"/>
                                     <TextBox x:Name="textBoxSettingsSuffix" HorizontalAlignment="Left" Height="23" Margin="256,61,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="148"/>
-                                    <CheckBox x:Name="checkBoxSettingsAddSequenceToEnd" Content="Add Sequence To End" HorizontalAlignment="Left" Margin="426,16,0,0" VerticalAlignment="Top" IsChecked="False"/>
 
                                 </Grid>
                             </GroupBox>
