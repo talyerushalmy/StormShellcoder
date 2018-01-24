@@ -42,6 +42,7 @@ namespace StormShellcoder
         private void resetErrorTag(Button button)
         {
             button.Background = this.defaultButtonBackground;
+            button.IsEnabled = false;
         }
 
         private void resetAllErrorTags()
@@ -50,7 +51,6 @@ namespace StormShellcoder
             foreach (Button button in buttons)
             {
                 resetErrorTag(button);
-                button.IsEnabled = true;
             }
         }
 
