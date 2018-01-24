@@ -31,6 +31,13 @@ namespace StormShellcoder
 
             output += String.Join(Settings.getJoinSeq(), original.Split('-'));
 
+            if (Settings.getAddJoinSequenceToEnd() && original != "")
+            {
+                output += Settings.getJoinSeq();
+            }
+
+            output = Settings.getPrefix() + output + Settings.getSuffix();
+
             return output;
         }
     }

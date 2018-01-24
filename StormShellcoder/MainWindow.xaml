@@ -23,12 +23,17 @@
                 <Grid Background="#FFE5E5E5">
                     <GroupBox x:Name="groupBoxSettings" Header="Settings" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Height="535" Width="769">
                         <Grid>
-                            <GroupBox x:Name="groupBoxSettingsOutputFormat" Header="Output Format" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="170" Width="737">
+                            <GroupBox x:Name="groupBoxSettingsOutputFormat" Header="Output Format" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="170" Width="737" RenderTransformOrigin="0.498,0.509">
                                 <Grid>
                                     <Label x:Name="labelSettingsJoinSequence" Content="Join Sequence" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
                                     <TextBox x:Name="textBoxSettingsJoinSequence" HorizontalAlignment="Left" Height="23" Margin="101,10,0,0" TextWrapping="Wrap" Text="\x" VerticalAlignment="Top" Width="120"/>
                                     <CheckBox x:Name="checkBoxSettingsAddSequenceToBeginning" Content="Add Sequence To Beginning" HorizontalAlignment="Left" Margin="235,16,0,0" VerticalAlignment="Top" IsChecked="True"/>
                                     <CheckBox x:Name="checkBoxSettingsUseCapitalLetters" Content="Use Capital Letters" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
+                                    <Label x:Name="labelSettingsPrefix" Content="Prefix" HorizontalAlignment="Left" Margin="10,61,0,0" VerticalAlignment="Top"/>
+                                    <Label x:Name="labelSettingsSuffix" Content="Suffix" HorizontalAlignment="Left" Margin="212,61,0,0" VerticalAlignment="Top"/>
+                                    <TextBox x:Name="textBoxSettingsPrefix" HorizontalAlignment="Left" Height="23" Margin="54,61,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="148"/>
+                                    <TextBox x:Name="textBoxSettingsSuffix" HorizontalAlignment="Left" Height="23" Margin="256,61,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="148"/>
+                                    <CheckBox x:Name="checkBoxSettingsAddSequenceToEnd" Content="Add Sequence To End" HorizontalAlignment="Left" Margin="426,16,0,0" VerticalAlignment="Top" IsChecked="False"/>
 
                                 </Grid>
                             </GroupBox>

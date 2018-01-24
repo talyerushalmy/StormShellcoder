@@ -7,7 +7,10 @@ namespace StormShellcoder
         // output format related settings
         private static string joinSeq;
         private static bool addJoinSequenceToBeginning;
+        private static bool addJoinSequenceToEnd;
         private static bool useCapitalLetters;
+        private static string prefix;
+        private static string suffix;
 
         // output tests related settings
         private static bool checkContainsNullByte;
@@ -32,6 +35,16 @@ namespace StormShellcoder
             Settings.addJoinSequenceToBeginning = addJoinSequenceToBeginning;
         }
 
+        public static bool getAddJoinSequenceToEnd()
+        {
+            return Settings.addJoinSequenceToEnd;
+        }
+
+        public static void setAddJoinSequenceToEnd(bool addJoinSequenceToEnd)
+        {
+            Settings.addJoinSequenceToEnd = addJoinSequenceToEnd;
+        }
+
         public static bool getUseCapitalLetters()
         {
             return Settings.useCapitalLetters;
@@ -40,6 +53,26 @@ namespace StormShellcoder
         public static void setUseCapitalLetters(bool useCapitalLetters)
         {
             Settings.useCapitalLetters = useCapitalLetters;
+        }
+
+        public static string getPrefix()
+        {
+            return Settings.prefix;
+        }
+
+        public static void setPrefix(string prefix)
+        {
+            Settings.prefix = prefix;
+        }
+
+        public static string getSuffix()
+        {
+            return Settings.suffix;
+        }
+
+        public static void setSuffix(string suffix)
+        {
+            Settings.suffix = suffix;
         }
 
         public static bool getCheckContainsNullByte()

@@ -28,7 +28,10 @@ namespace StormShellcoder
             // output format related settings
             Settings.setJoinSeq(this.textBoxSettingsJoinSequence.Text);
             Settings.setAddJoinSequenceToBeginning((bool)this.checkBoxSettingsAddSequenceToBeginning.IsChecked);
+            Settings.setAddJoinSequenceToEnd((bool)this.checkBoxSettingsAddSequenceToEnd.IsChecked);
             Settings.setUseCapitalLetters((bool)this.checkBoxSettingsUseCapitalLetters.IsChecked);
+            Settings.setPrefix(this.textBoxSettingsPrefix.Text);
+            Settings.setSuffix(this.textBoxSettingsSuffix.Text);
 
             // output tests related settings
             Settings.setCheckContainsNullByte((bool)this.checkBoxSettingsCheckNullByte.IsChecked);
@@ -42,7 +45,7 @@ namespace StormShellcoder
 
         private void resetAllErrorTags()
         {
-            Button[] buttons = new Button[]{this.buttonCheckNullByte};
+            Button[] buttons = new Button[] { this.buttonCheckNullByte };
             foreach (Button button in buttons)
             {
                 resetErrorTag(button);
@@ -51,6 +54,7 @@ namespace StormShellcoder
 
         private void performTests(Disassembly disasm)
         {
+            // perform null byte test
             if (Settings.getCheckContainsNullByte())
             {
                 this.buttonCheckNullByte.Background = Brushes.Green;
