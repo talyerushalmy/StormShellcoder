@@ -130,6 +130,7 @@ namespace StormShellcoder
         {
             try
             {
+                this.labelOutputTime.Content = DateTime.Now.ToLongTimeString();
                 cleanTempFolder();
                 resetAllErrorTags();
 
@@ -157,6 +158,7 @@ namespace StormShellcoder
                     disasm = new Disassembly(process_disassembly_output);
 
                     this.textBoxOutput.Text = DataManipulation.manipulateOutput(disasm.getAllOpcodes());
+                    this.labelOutputSize.Content = "SC Length: " + (disasm.getAllOpcodes().Length + 1) / 3 + " Bytes";
                     this.assemblerSuccess = true;
                 }
                 catch (Exception exception)

@@ -11,7 +11,12 @@
             <TabItem x:Name="tabWrite" Header="Write">
                 <Grid Background="#FFE5E5E5">
                     <TextBox x:Name="textBoxInput" HorizontalAlignment="Left" Height="545" TextWrapping="Wrap" VerticalAlignment="Top" Width="445" Margin="0,0,0,-0.2" AcceptsReturn="True" AcceptsTab="True" VerticalScrollBarVisibility="Auto"/>
-                    <TextBox x:Name="textBoxOutput" HorizontalAlignment="Left" Height="446" Margin="445,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="344" IsReadOnly="True" VerticalScrollBarVisibility="Auto"/>
+                    <TextBox x:Name="textBoxOutput" HorizontalAlignment="Left" Height="412" Margin="445,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="344" IsReadOnly="True" VerticalScrollBarVisibility="Auto"/>
+                    <Grid x:Name="gridInfo" HorizontalAlignment="Left" Height="34" Margin="445,412,0,0" VerticalAlignment="Top" Width="344">
+                        <Border BorderBrush="Black" BorderThickness="0 0 0 0.5"></Border>
+                        <Label x:Name="labelOutputSize" Content="Assembly Information" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="12" Height="34" Width="344" VerticalContentAlignment="Center"/>
+                        <Label x:Name="labelOutputTime" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="12" FlowDirection="RightToLeft" Width="342" Margin="2,0,0,0" Height="34" VerticalContentAlignment="Center"/>
+                    </Grid>
                     <Grid x:Name="gridErrorTags" HorizontalAlignment="Left" Height="34" Margin="445,446,0,0" VerticalAlignment="Top" Width="344">
                         <Button x:Name="buttonCheckAssemblerSuccess" Content="ASM" HorizontalAlignment="Left" VerticalAlignment="Top" Width="34" Height="34" FontSize="12"/>
                         <Button x:Name="buttonCheckNullByte" Content="\0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="34" Height="34" FontSize="12" Margin="34,0,0,0"/>
