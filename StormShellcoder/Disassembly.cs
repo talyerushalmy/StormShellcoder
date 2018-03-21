@@ -107,5 +107,10 @@ namespace StormShellcoder
 
             return st;
         }
+
+        public uint getSize()
+        {
+            return Convert.ToUInt32((getAllOpcodes().Length + 1) / 3);
+        }
     }
 }

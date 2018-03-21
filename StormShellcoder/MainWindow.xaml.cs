@@ -2,8 +2,10 @@
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 
 namespace StormShellcoder
@@ -37,6 +39,16 @@ namespace StormShellcoder
 
             // output tests related settings
             Settings.setCheckContainsNullByte((bool)this.checkBoxSettingsCheckNullByte.IsChecked);
+            Settings.setCheckMaxSize((bool)this.checkBoxSettingsCheckSize.IsChecked);
+            try
+            {
+                Settings.setMaxSize(Convert.ToUInt32(this.textBoxSettingsTestsMaxSize.Text));
+            }
+            catch
+            {
+                Settings.setMaxSize(0);
+                this.textBoxSettingsTestsMaxSize.Text = "0";
+            }
         }
 
         private void resetErrorTag(Button button)
@@ -47,7 +59,7 @@ namespace StormShellcoder
 
         private void resetAllErrorTags()
         {
-            Button[] buttons = new Button[] { this.buttonCheckNullByte };
+            Button[] buttons = new Button[] { this.buttonCheckNullByte, this.buttonCheckMaxSize };
             foreach (Button button in buttons)
             {
                 resetErrorTag(button);
@@ -83,6 +95,24 @@ namespace StormShellcoder
             else
             {
                 resetErrorTag(this.buttonCheckNullByte);
+            }
+
+            // perform max size test
+            if (Settings.getCheckMaxSize())
+            {
+                if (disasm.getSize() > Settings.getMaxSize())
+                {
+                    this.buttonCheckMaxSize.Background = Brushes.Red;
+                }
+                else
+                {
+                    this.buttonCheckMaxSize.Background = Brushes.Green;
+                }
+                this.buttonCheckMaxSize.IsEnabled = true;
+            }
+            else
+            {
+                resetErrorTag(this.buttonCheckMaxSize);
             }
         }
 
@@ -158,7 +188,7 @@ namespace StormShellcoder
                     disasm = new Disassembly(process_disassembly_output);
 
                     this.textBoxOutput.Text = DataManipulation.manipulateOutput(disasm.getAllOpcodes());
-                    this.labelOutputSize.Content = "SC Length: " + (disasm.getAllOpcodes().Length + 1) / 3 + " Bytes";
+                    this.labelOutputSize.Content = "SC Length: " + disasm.getSize() + " Bytes";
                     this.assemblerSuccess = true;
                 }
                 catch (Exception exception)
@@ -174,6 +204,7 @@ namespace StormShellcoder
             finally
             {
                 performTests(disasm);
+                cleanTempFolder();
             }
         }
 
@@ -185,6 +216,12 @@ namespace StormShellcoder
         private void buttonSaveSettings_Click(object sender, RoutedEventArgs e)
         {
             saveSettings();
+        }
+
+        private void onlyNumeric(object sender, TextChangedEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            textBox.Text = Regex.Replace(textBox.Text, "[^0-9]+", "");
         }
     }
 }

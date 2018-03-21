@@ -22,6 +22,7 @@ The supported tests are the following:
 
 - The assembler finished running successfully (`ASM`)
 - The output shellcode contains a null byte (`\0`)
+- The output shellcode is smaller than a configured size (`Size`)
 
 **Format**
 

@@ -14,6 +14,8 @@ namespace StormShellcoder
 
         // output tests related settings
         private static bool checkContainsNullByte;
+        private static bool checkMaxSize;
+        private static uint maxSize; // in bytes
 
         public static string getJoinSeq()
         {
@@ -83,6 +85,26 @@ namespace StormShellcoder
         public static void setCheckContainsNullByte(bool checkContainsNullByte)
         {
             Settings.checkContainsNullByte = checkContainsNullByte;
+        }
+
+        public static bool getCheckMaxSize()
+        {
+            return Settings.checkMaxSize;
+        }
+
+        public static void setCheckMaxSize(bool checkMaxSize)
+        {
+            Settings.checkMaxSize = checkMaxSize;
+        }
+
+        public static uint getMaxSize()
+        {
+            return Settings.maxSize;
+        }
+
+        public static void setMaxSize(uint maxSize)
+        {
+            Settings.maxSize = maxSize;
         }
     }
 }
