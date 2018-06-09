@@ -60,7 +60,15 @@
                 </Grid>
             </TabItem>
             <TabItem x:Name="tabAbout" Header="About">
-                <Grid Background="#FFE5E5E5"/>
+                <Grid Background="#FFE5E5E5">
+                    <GroupBox x:Name="groupBoxAbout" Header="About Storm Shellcoder" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="525" Width="769">
+                        <Grid>
+                            <TextBlock x:Name="textBlockAbout" HorizontalAlignment="Center" Margin="0,19,0,307.4" TextWrapping="Wrap" VerticalAlignment="Center" Height="176" Width="283" TextDecorations="{x:Null}" TextAlignment="Center" Cursor="None"><Run Text="Storm Shellcoder"/><LineBreak/><Run/><LineBreak/><Run Text="A shellcode utilizer"/><LineBreak/><Run/><LineBreak/><Run Text="Copyright © 2018 Tal Yerushalmy"/><LineBreak/><Run Text="All rights reserved"/><LineBreak/><Run/><LineBreak/><Run Text="The product names mentioned in this software may be trademarks or registered trademarks of their respective owners."/></TextBlock>
+                            <Image x:Name="image" HorizontalAlignment="Center" Height="201" Margin="10,240,0,0" VerticalAlignment="Top" Width="201" Source="img/Icon.png"/>
+
+                        </Grid>
+                    </GroupBox>
+                </Grid>
             </TabItem>
         </TabControl>
 
